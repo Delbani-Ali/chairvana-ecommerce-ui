@@ -1,0 +1,456 @@
+/* Global reset remains the same */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Crucial for preventing horizontal scroll */
+    font-family: 'Onest', serif;
+}
+
+/*  
+   This wrapper centers all your main content 
+   and handles the 50px side spacing (padding)
+*/
+.main-wrapper {
+    padding: 0 50px;
+    /* Max width prevents content from becoming too wide on huge screens */
+    max-width: 1600px;
+    margin: 0 auto;
+    /* Centers the content block itself */
+}
+
+/* Header needs its padding adjusted to match the wrapper */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    /* Aligns header content with wrapper content */
+    margin: 50px 0;
+}
+
+/* Logo stays left */
+.logo {
+    flex: 0 0 auto;
+}
+
+/* Links styling */
+nav a {
+    text-decoration: none;
+    color: #4c2024;
+    font-weight: 500;
+}
+
+/* Main nav stays CENTER */
+.nav-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.nav-main a {
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+/* invisible border placeholder */
+.nav-main a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid #4c2024;
+    border-radius: 6px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-main a:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Icons stay RIGHT */
+.nav-icons {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Icons sizing */
+.nav-icons img {
+    width: 28px;
+    height: 28px;
+}
+
+/* --- Hero Section (Needs to span full width, so keep outside main-wrapper) --- */
+/* Align text inside the hero-content div below */
+.hero-banner {
+    /* Removed all background properties and height */
+    width: 100%;
+    margin-bottom: 60px;
+    /* Space below the banner */
+}
+
+/* Add width 100% to the actual image placed in HTML */
+.hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* --- Special Category Title (Inside main-wrapper) --- */
+.section-title {
+    text-align: center;
+    margin: 60px 0 40px;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #4c2024;
+    /* Underline color */
+}
+
+/* --- Card Section (Inside main-wrapper) --- */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 50px;
+}
+
+.card {
+    text-align: center;
+    flex: 1;
+    overflow: hidden;
+    /* Keeps images/hovers constrained */
+}
+
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.img-wrapper img {
+    width: 100%;
+    transition: 0.5s;
+}
+
+.arrow-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    font-size: 1.5rem;
+    color: #4c2024;
+}
+
+.card:hover .arrow-hover {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+.card h5 {
+    color: #D2B48C;
+    margin-top: 15px;
+    font-weight: 300;
+}
+
+/* Beige */
+.card p {
+    color: #B22222;
+    font-weight: 600;
+}
+
+/* Implement the arrow icon hover as seen in your image */
+.card:hover p {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* --- Quote Section (Wine Stain) --- */
+.quote-and-posters {
+    display: flex;
+    align-items: center;
+}
+
+.quote-section {
+    padding: 50px 50px;
+}
+
+.quote-box {
+    background-color: #ded3d3;
+    /* Wine Stain Color */
+    color: #4c2024;
+    padding: 60px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.quote-box span {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.quote-mark {
+    font-size: 5rem;
+    display: block;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.quote-author {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.quote-author span {
+    font-size: large;
+    font-weight: 200;
+    opacity: 0.7;
+}
+
+/* --- Popping Posters --- */
+.poster-container {
+    display: flex;
+    gap: 30px;
+    padding: 0 50px;
+    justify-content: center;
+}
+
+.poster {
+    position: relative;
+    flex: 1;
+    height: 270px;
+    /* Slightly smaller than quote box */
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.4s ease-out;
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.poster-text {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.poster:hover {
+    transform: translateY(-20px);
+    /* Pops up towards user */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Service Icons Section --- */
+.service-icons-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0;
+    margin: 20px 0;
+    /* Space it out from other sections */
+    border-top: 1px solid #eee;
+    border-bottom: 4px solid #eee;
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    /* Stack icon, h5, p vertically */
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.icon-placeholder {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.service-item h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4c2024;
+}
+
+.service-item p {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.service-divider {
+    width: 1px;
+    background-color: #eee;
+    height: 60px;
+    /* Vertical line height */
+}
+
+
+/* --- Featured Products Section (Matching the Image) --- */
+.featured-products-section {
+    padding-bottom: 80px;
+}
+
+.product-filter-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.product-filter-nav a {
+    text-decoration: none;
+    color: gray;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.product-filter-nav a:hover,
+.product-filter-nav a.active {
+    color: #4c2024;
+    /* Match primary color */
+    border-bottom: 2px solid #4c2024;
+}
+
+/* ---------------- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Flip container for 3D effect */
+.flip-container {
+    perspective: 1000px;
+}
+
+.flip-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Keeps square ratio */
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+}
+
+.flip-container:hover .flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front & back images */
+.flip-inner img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    backface-visibility: hidden;
+}
+
+.flip-inner .back {
+    transform: rotateY(180deg);
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.rating {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.product-name {
+    font-size: 0.9rem;
+    color: gray;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #4c2024;
+}
+
+/* -------- */
+ .footer {
+    height: 200px; /* Footer height */
+    background-color: #4c2024; /* Footer background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #D2B48C;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 5px; /* Space between logos */
+    margin-bottom: 15px; /* Space between logos and copyright */
+  }
+
+  .social-icons a img {
+    width: 35px;  /* Logo size */
+    height: 35px;
+    transition: transform 0.3s; /* Smooth hover animation */
+  }
+
+  .social-icons a img:hover {
+    transform: scale(1.2); /* Grow icons on hover */
+  }
+
+  .copyright {
+    font-size: 14px; /* Small copyright font */
+  }
